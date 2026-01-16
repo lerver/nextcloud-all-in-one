@@ -122,6 +122,14 @@ class ConfigurationManager
         return $backupTimes;
     }
 
+    public function GetAioVersion() : string {
+        $path = DataConst::GetAioVersionFile();
+        if ($path !== '' && file_exists($path)) {
+            return trim((string)file_get_contents($path));
+        }
+        return '';
+    }
+
     public function wasStartButtonClicked() : bool {
         if (isset($this->GetConfig()['wasStartButtonClicked'])) {
             return true;
