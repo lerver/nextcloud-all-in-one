@@ -80,11 +80,7 @@ readonly class ConfigurationController {
                     throw new InvalidSettingConfigurationException("Collabora and Onlyoffice are not allowed to be enabled at the same time!");
                 }
                 $this->configurationManager->isClamavEnabled = isset($request->getParsedBody()['clamav']);
-                if (isset($request->getParsedBody()['onlyoffice'])) {
-                    $this->configurationManager->SetOnlyofficeEnabledState(1);
-                } else {
-                    $this->configurationManager->SetOnlyofficeEnabledState(0);
-                }
+                $this->configurationManager->isOnlyofficeEnabled = isset($request->getParsedBody()['onlyoffice']);
                 if (isset($request->getParsedBody()['collabora'])) {
                     $this->configurationManager->SetCollaboraEnabledState(1);
                 } else {
