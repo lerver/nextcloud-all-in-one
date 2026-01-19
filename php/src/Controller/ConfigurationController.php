@@ -81,11 +81,7 @@ readonly class ConfigurationController {
                 }
                 $this->configurationManager->isClamavEnabled = isset($request->getParsedBody()['clamav']);
                 $this->configurationManager->isOnlyofficeEnabled = isset($request->getParsedBody()['onlyoffice']);
-                if (isset($request->getParsedBody()['collabora'])) {
-                    $this->configurationManager->SetCollaboraEnabledState(1);
-                } else {
-                    $this->configurationManager->SetCollaboraEnabledState(0);
-                }
+                $this->configurationManager->isCollaboraEnabled = isset($request->getParsedBody()['collabora']);
                 if (isset($request->getParsedBody()['talk'])) {
                     $this->configurationManager->SetTalkEnabledState(1);
                 } else {
