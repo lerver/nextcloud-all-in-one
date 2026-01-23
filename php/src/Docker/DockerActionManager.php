@@ -205,7 +205,7 @@ readonly class DockerActionManager {
         foreach ($container->volumes->GetVolumes() as $volume) {
             // // NEXTCLOUD_MOUNT gets added via bind-mount later on
             // if ($container->identifier === 'nextcloud-aio-nextcloud') {
-            //     if ($volume->name === $this->configurationManager->nextcloud_mount) {
+            //     if ($volume->name === $this->configurationManager->nextcloudMount) {
             //         continue;
             //     }
             // }
@@ -398,9 +398,19 @@ readonly class DockerActionManager {
             // This is needed due to a bug in libwebsockets used in Janus which cannot handle unlimited ulimits
             $requestBody['HostConfig']['Ulimits'] = [["Name" => "nofile", "Hard" => 200000, "Soft" => 200000]];
             // // Special things for the nextcloud container which should not be exposed in the containers.json
+<<<<<<< HEAD
             // } elseif ($container->identifier === 'nextcloud-aio-nextcloud') {
             //     foreach ($container->volumes->GetVolumes() as $volume) {
             //         if ($volume->name !== $this->configurationManager->nextcloud_mount) {
+||||||| parent of e6528742 (Camelize property nextcloud_mount => nextcloudMount)
+            // } elseif ($container->GetIdentifier() === 'nextcloud-aio-nextcloud') {
+            //     foreach ($container->GetVolumes()->GetVolumes() as $volume) {
+            //         if ($volume->name !== $this->configurationManager->nextcloud_mount) {
+=======
+            // } elseif ($container->GetIdentifier() === 'nextcloud-aio-nextcloud') {
+            //     foreach ($container->GetVolumes()->GetVolumes() as $volume) {
+            //         if ($volume->name !== $this->configurationManager->nextcloudMount) {
+>>>>>>> e6528742 (Camelize property nextcloud_mount => nextcloudMount)
             //             continue;
             //         }
             //         $mounts[] = ["Type" => "bind", "Source" => $volume->name, "Target" => $volume->mountPoint, "ReadOnly" => !$volume->isWritable, "BindOptions" => [ "Propagation" => "rshared"]];
