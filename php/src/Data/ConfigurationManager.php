@@ -634,7 +634,7 @@ class ConfigurationManager
         set { $this->set('nextcloud_datadir_mount', $value); }
     }
 
-    public string $nextcloud_upload_limit {
+    public string $nextcloudUploadLimit {
         get => $this->GetEnvironmentalVariableOrConfig('NEXTCLOUD_UPLOAD_LIMIT', 'nextcloud_upload_limit', '16G');
         set { $this->set('nextcloud_upload_limit', $value); }
     }
@@ -645,7 +645,7 @@ class ConfigurationManager
     }
 
     public function GetApacheMaxSize() : int {
-        $uploadLimit = (int)rtrim($this->nextcloud_upload_limit, 'G');
+        $uploadLimit = (int)rtrim($this->nextcloudUploadLimit, 'G');
         return $uploadLimit * 1024 * 1024 * 1024;
     }
 
@@ -1071,7 +1071,7 @@ class ConfigurationManager
             'IMAGINARY_ENABLED' => $this->isImaginaryEnabled ? 'yes' : '',
             'FULLTEXTSEARCH_ENABLED' => $this->isFulltextsearchEnabled ? 'yes' : '',
             'DOCKER_SOCKET_PROXY_ENABLED' => $this->isDockerSocketProxyEnabled ? 'yes' : '',
-            'NEXTCLOUD_UPLOAD_LIMIT' => $this->nextcloud_upload_limit,
+            'NEXTCLOUD_UPLOAD_LIMIT' => $this->nextcloudUploadLimit,
             'NEXTCLOUD_MEMORY_LIMIT' => $this->nextcloud_memory_limit,
             'NEXTCLOUD_MAX_TIME' => $this->nextcloudMaxTime,
             'BORG_RETENTION_POLICY' => $this->GetBorgRetentionPolicy(),
