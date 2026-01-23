@@ -588,7 +588,6 @@ class ConfigurationManager
         $configValue = $this->get($configName, '');
         if ($envVariableOutput === false) {
             if ($configValue === '') {
-                $this->set($configName, $defaultValue);
                 return $defaultValue;
             }
             return $configValue;
