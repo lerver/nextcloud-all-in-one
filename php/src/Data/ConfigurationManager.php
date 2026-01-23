@@ -378,7 +378,7 @@ class ConfigurationManager
             }
 
             // Get the apache port
-            $port = $this->apache_port;
+            $port = $this->apachePort;
 
             if (!filter_var($dnsRecordIP, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
                 if ($port === '443') {
@@ -565,7 +565,7 @@ class ConfigurationManager
         $this->set('password', $newPassword);
     }
 
-    public string $apache_port {
+    public string $apachePort {
         get => $this->GetEnvironmentalVariableOrConfig('APACHE_PORT', 'apache_port', '443');
         set { $this->set('apache_port', $value); }
     }
@@ -1054,7 +1054,7 @@ class ConfigurationManager
             'AIO_URL' => $this->aioUrl,
             'SELECTED_RESTORE_TIME' => $this->selectedRestoreTime,
             'RESTORE_EXCLUDE_PREVIEWS' => $this->restoreExcludePreviews ? '1' : '',
-            'APACHE_PORT' => $this->apache_port,
+            'APACHE_PORT' => $this->apachePort,
             'APACHE_IP_BINDING' => $this->apacheIpBinding,
             'TALK_PORT' => $this->talk_port,
             'TURN_DOMAIN' => $this->turnDomain,
